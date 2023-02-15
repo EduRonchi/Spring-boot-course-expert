@@ -1,4 +1,4 @@
-package com.io.github.eduronchi.domai.entity;
+package com.io.github.eduronchi.domain.entity;
 
 import java.math.BigDecimal;
 
