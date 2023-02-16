@@ -2,6 +2,8 @@ package com.io.github.eduronchi.domain.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "cliente")
 public class Cliente {
@@ -13,6 +15,9 @@ public class Cliente {
 
     @Column(name = "name", length = 100)
     private String name;
+
+    @OneToMany(mappedBy = "cliente")
+    private Set<Pedido> pedidos;
 
     public Cliente() {
     }
