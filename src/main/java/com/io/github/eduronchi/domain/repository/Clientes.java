@@ -19,6 +19,8 @@ public interface Clientes extends JpaRepository <Cliente, Integer> {
 
    boolean existsByName(String name);
 
+   @Query("select c from Cliente c left join fetch c.pedidos p where c.id = :id")
+   Cliente findClienteFetchPedidos(@Param("id") Integer id);
 
 
 }

@@ -1,7 +1,6 @@
 package com.io.github.eduronchi.domain.entity;
 
 import jakarta.persistence.*;
-
 import java.util.Set;
 
 @Entity
@@ -16,10 +15,18 @@ public class Cliente {
     @Column(name = "name", length = 100)
     private String name;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente" , fetch = FetchType.LAZY)
     private Set<Pedido> pedidos;
 
     public Cliente() {
+    }
+
+    public Set<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 
     public Cliente(Integer id, String name) {
@@ -34,12 +41,15 @@ public class Cliente {
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -51,4 +61,5 @@ public class Cliente {
                 ", name='" + name + '\'' +
                 '}';
     }
+
 }
