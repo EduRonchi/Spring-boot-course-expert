@@ -2,8 +2,6 @@ package com.io.github.eduronchi.rest.controller;
 
 import com.io.github.eduronchi.domain.entity.Cliente;
 import com.io.github.eduronchi.domain.repository.Clientes;
-import org.apache.coyote.Response;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -50,5 +48,19 @@ public class ClienteController {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/api/clientes/{id}")
+    @ResponseBody
+    public ResponseEntity update(@PathVariable Integer id, @RequestBody Cliente cliente){
+
+        return clientes
+                .findById(id)
+                .map(clienteExistente -> {
+                    cliente.setId(clienteExistente.getId());
+                    clientes.save(cliente);
+                    return ResponseEntity.noContent().build();
+                }).orElseGet(() -> ResponseEntity.notFound().build());
+
     }
 }
