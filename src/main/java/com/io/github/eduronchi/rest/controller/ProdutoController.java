@@ -1,6 +1,5 @@
 package com.io.github.eduronchi.rest.controller;
 
-import com.io.github.eduronchi.domain.entity.Cliente;
 import com.io.github.eduronchi.domain.entity.Produto;
 import com.io.github.eduronchi.domain.repository.Produtos;
 import org.springframework.data.domain.Example;
