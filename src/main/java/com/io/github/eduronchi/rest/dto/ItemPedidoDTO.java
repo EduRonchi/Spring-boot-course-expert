@@ -1,7 +1,15 @@
 package com.io.github.eduronchi.rest.dto;
 
-public class ItemPedidoDTO {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class ItemPedidoDTO {
     private Integer produto;
     private Integer quantidade;
 }
