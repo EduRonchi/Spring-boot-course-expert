@@ -75,6 +75,5 @@ public class ClienteController {
 
         Example example = Example.of(filtro, matcher);
         return clientes.findAll(example);
-
     }
 }
