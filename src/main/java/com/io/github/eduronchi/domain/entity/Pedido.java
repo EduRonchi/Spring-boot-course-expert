@@ -1,5 +1,6 @@
 package com.io.github.eduronchi.domain.entity;
 
+import com.io.github.eduronchi.domain.enums.StatusPedido;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,6 +28,10 @@ public class Pedido {
 
     @Column(name = "total", precision = 20, scale = 2)
     private BigDecimal total;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private StatusPedido status;
 
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
