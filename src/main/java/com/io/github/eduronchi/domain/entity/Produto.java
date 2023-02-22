@@ -1,13 +1,13 @@
 package com.io.github.eduronchi.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "produto")
 public class Produto {

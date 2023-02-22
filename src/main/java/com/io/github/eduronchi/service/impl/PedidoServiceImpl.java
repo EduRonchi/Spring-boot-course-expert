@@ -10,8 +10,8 @@ import com.io.github.eduronchi.domain.repository.Pedidos;
 import com.io.github.eduronchi.domain.repository.Produtos;
 import com.io.github.eduronchi.exception.RegraNegocioException;
 import com.io.github.eduronchi.rest.dto.ItemPedidoDTO;
-import com.io.github.eduronchi.service.PedidoService;
 import com.io.github.eduronchi.rest.dto.PedidoDTO;
+import com.io.github.eduronchi.service.PedidoService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -71,5 +71,6 @@ public class PedidoServiceImpl implements PedidoService {
                     itemPedido.setProduto(produto);
                     return itemPedido;
                 }).collect(Collectors.toList());
+
     }
 }

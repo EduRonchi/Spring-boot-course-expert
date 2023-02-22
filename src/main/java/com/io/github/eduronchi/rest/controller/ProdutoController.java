@@ -4,6 +4,7 @@ import com.io.github.eduronchi.domain.entity.Produto;
 import com.io.github.eduronchi.domain.repository.Produtos;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -23,20 +24,21 @@ public class ProdutoController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Produto save (@RequestBody Produto produto) {
+    public Produto save(@RequestBody Produto produto){
         return repository.save(produto);
     }
 
     @PutMapping("{id}")
-    public void update(@PathVariable Integer id, @RequestBody Produto produto) {
+    @ResponseStatus(NO_CONTENT)
+    public void update(@PathVariable Integer id, @RequestBody Produto produto){
         repository
                 .findById(id)
-                .map(p -> {
+                .map( p -> {
                     produto.setId(p.getId());
                     repository.save(produto);
                     return produto;
-                }).orElseThrow(() ->
-                        new ResponseStatusException(NOT_FOUND,
+                }).orElseThrow( () ->
+                        new ResponseStatusException(HttpStatus.NOT_FOUND,
                                 "Produto não encontrado."));
     }
 
@@ -46,10 +48,10 @@ public class ProdutoController {
         repository
                 .findById(id)
                 .map(p -> {
-                    repository.deleteById(id);
+                    repository.delete(p);
                     return Void.TYPE;
-                }).orElseThrow(() ->
-                        new ResponseStatusException(NOT_FOUND,
+                }).orElseThrow( () ->
+                        new ResponseStatusException(HttpStatus.NOT_FOUND,
                                 "Produto não encontrado."));
     }
 
@@ -57,8 +59,8 @@ public class ProdutoController {
     public Produto getById(@PathVariable Integer id){
         return repository
                 .findById(id)
-                .orElseThrow(() ->
-                        new ResponseStatusException(NOT_FOUND,
+                .orElseThrow( () ->
+                        new ResponseStatusException(HttpStatus.NOT_FOUND,
                                 "Produto não encontrado."));
     }
 

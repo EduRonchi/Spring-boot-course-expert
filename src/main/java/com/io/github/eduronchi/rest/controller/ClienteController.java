@@ -16,16 +16,17 @@ public class ClienteController {
 
     private Clientes clientes;
 
-    public ClienteController(Clientes clientes){
+    public ClienteController(Clientes clientes) {
         this.clientes = clientes;
     }
 
     @GetMapping("{id}")
-    public Cliente getClienteById(@PathVariable Integer id) {
+    public Cliente getClienteById(@PathVariable Integer id){
         return clientes
                 .findById(id)
                 .orElseThrow(() ->
-                        new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
+                        new ResponseStatusException(HttpStatus.NOT_FOUND,
+                                "Cliente não encontrado"));
     }
 
     @PostMapping
@@ -38,21 +39,19 @@ public class ClienteController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer id){
         clientes.findById(id)
-                .map( cliente -> {
+                .map(cliente -> {
                     clientes.delete(cliente);
                     return cliente;
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                        "Cliente não encontrado"));
-        }
+                        "Cliente não encontrado") );
 
-
-
+    }
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Integer id,
-                       @RequestBody Cliente cliente ){
+    public void update( @PathVariable Integer id,
+                        @RequestBody Cliente cliente ){
         clientes
                 .findById(id)
                 .map(clienteExistente -> {
