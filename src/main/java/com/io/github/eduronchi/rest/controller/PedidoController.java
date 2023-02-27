@@ -8,6 +8,7 @@ import com.io.github.eduronchi.rest.dto.InformacaoItemPedidoDTO;
 import com.io.github.eduronchi.rest.dto.InformacoesPedidoDTO;
 import com.io.github.eduronchi.rest.dto.PedidoDTO;
 import com.io.github.eduronchi.service.PedidoService;
+import jakarta.validation.Valid;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -31,7 +32,7 @@ public class PedidoController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Integer save(@RequestBody PedidoDTO dto){
+    public Integer save(@RequestBody @Valid PedidoDTO dto){
         Pedido pedido = service.salvar(dto);
         return pedido.getId();
     }
@@ -48,7 +49,7 @@ public class PedidoController {
     @PatchMapping("{id}")
     @ResponseStatus(NO_CONTENT)
     public void updateStatus(@PathVariable Integer id,
-                             @RequestBody AtualizacaoStatusPedidoDTO dto) {
+                             @RequestBody @Valid AtualizacaoStatusPedidoDTO dto) {
         String novoStatus = dto.getNovoStatus();
         service.atualizaStatus(id, StatusPedido.valueOf(novoStatus));
 
