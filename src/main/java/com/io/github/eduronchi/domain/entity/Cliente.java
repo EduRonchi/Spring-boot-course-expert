@@ -2,7 +2,9 @@ package com.io.github.eduronchi.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.Set;
 
@@ -19,9 +21,12 @@ public class Cliente {
     private Integer id;
 
     @Column(name = "name", length = 100)
+    @NotEmpty(message = "Campo name é obrigatório.")
     private String name;
 
     @Column(name = "cpf", length = 11)
+    @NotEmpty(message = "Campo CPF é obrigatório.")
+    @CPF(message = "Informe um CPF válido.")
     private String cpf;
 
     @JsonIgnore
