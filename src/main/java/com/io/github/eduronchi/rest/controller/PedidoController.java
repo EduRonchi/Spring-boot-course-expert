@@ -8,11 +8,11 @@ import com.io.github.eduronchi.rest.dto.InformacaoItemPedidoDTO;
 import com.io.github.eduronchi.rest.dto.InformacoesPedidoDTO;
 import com.io.github.eduronchi.rest.dto.PedidoDTO;
 import com.io.github.eduronchi.service.PedidoService;
-import jakarta.validation.Valid;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;

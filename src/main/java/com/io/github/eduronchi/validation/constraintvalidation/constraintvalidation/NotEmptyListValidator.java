@@ -1,10 +1,9 @@
-package com.io.github.eduronchi.validation.constraintvalidation;
+package com.io.github.eduronchi.validation.constraintvalidation.constraintvalidation;
 
-import com.io.github.eduronchi.validation.NotEmptyList;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+import com.io.github.eduronchi.validation.constraintvalidation.NotEmptyList;
 
-
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import java.util.List;
 
 public class NotEmptyListValidator

@@ -1,5 +1,6 @@
 package com.io.github.eduronchi.service.impl;
 
+
 import com.io.github.eduronchi.domain.entity.Cliente;
 import com.io.github.eduronchi.domain.entity.ItemPedido;
 import com.io.github.eduronchi.domain.entity.Pedido;
@@ -14,9 +15,9 @@ import com.io.github.eduronchi.exception.RegraNegocioException;
 import com.io.github.eduronchi.rest.dto.ItemPedidoDTO;
 import com.io.github.eduronchi.rest.dto.PedidoDTO;
 import com.io.github.eduronchi.service.PedidoService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -76,7 +77,7 @@ public class PedidoServiceImpl implements PedidoService {
 
         return items
                 .stream()
-                .map( dto -> {
+                .map(dto -> {
                     Integer idProduto = dto.getProduto();
                     Produto produto = produtosRepository
                             .findById(idProduto)

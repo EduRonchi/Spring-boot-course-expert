@@ -2,13 +2,13 @@ package com.io.github.eduronchi.rest.controller;
 
 import com.io.github.eduronchi.domain.entity.Cliente;
 import com.io.github.eduronchi.domain.repository.Clientes;
-import jakarta.validation.Valid;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController

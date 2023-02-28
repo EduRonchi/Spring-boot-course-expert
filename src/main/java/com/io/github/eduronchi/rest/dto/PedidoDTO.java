@@ -1,9 +1,11 @@
 package com.io.github.eduronchi.rest.dto;
 
-import com.io.github.eduronchi.validation.NotEmptyList;
-import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import com.io.github.eduronchi.validation.constraintvalidation.NotEmptyList;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 
